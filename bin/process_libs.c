@@ -10,8 +10,8 @@ Process randomNewProcess() {
 
     // Request I/O
     int requiredIO = random_choice(FALSE, TRUE);
-    int typeIndex = random_choice(0,2); // Escolhe um entre os 3 tipos de I/O do vetoR
-    int afterCycles = random_choice(MIN_CYCLES_PER_PROCESS, totalCycles-1); // O request I/O deve ser chamado antes do processo finalizar
+    int typeIndex = random_choice(0,2); // Escolhe um entre os 3 tipos de I/O do vetor
+    int afterCycles = random_choice(1, totalCycles-1); // O request I/O deve ser chamado antes do processo finalizar
     char randomName[100];
     sprintf(randomName, "Random process n=%d", random_choice(1, 99999)); // Seta um nome aleatório
 

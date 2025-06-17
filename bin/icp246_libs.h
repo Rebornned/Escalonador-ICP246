@@ -10,7 +10,7 @@
 //                                Defines
 // ============================================================================
 // ############################################################################
-#define PROCESS_LIMIT 2    // Quantidade de processos máxima
+#define PROCESS_LIMIT 50     // Quantidade de processos máxima
 #define QUANTUM_CLOCK 4     // Tempo do clock de cada ciclo
 #define TRUE 1              // 1 é verdadeiro
 #define FALSE 0             // 1 é falso
@@ -28,7 +28,7 @@
 //-----------------------------------------------------------------------------
 //                         Definição de Randomização
 //-----------------------------------------------------------------------------
-#define MIN_CYCLES_PER_PROCESS 1 // Define o piso de ciclos minimos durante a aleatoriazação do processo
+#define MIN_CYCLES_PER_PROCESS 2 // Define o piso de ciclos minimos durante a aleatoriazação do processo
 #define MAX_CYCLES_PER_PROCESS 20 // Define o teto de ciclos máximos durante a aleatoriazação do processo
 // ############################################################################
 // ============================================================================

@@ -1,0 +1,19 @@
+# Binários compilados
+*.exe
+*.o
+*.out
+
+# Pastas de build e executáveis
+*.so
+*.a
+
+# Arquivos gerados por IDEs
+.vscode/
+*.swp
+*.swo
+*.log
+
+# Outros
+*.bak
+*~
+bin/.vscode
