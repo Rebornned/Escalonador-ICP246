@@ -88,7 +88,7 @@ int main() {
             displayQueue(&highQueue, TRUE);
             printf("FILA DE BAIXA PRIORIDADE \n");
             displayQueue(&lowQueue , TRUE);
-            startSimulation(&highQueue, &lowQueue, &ioQueue);
+            startSimulation(&highQueue, &lowQueue, &ioQueue, mode);
             totalProcesses = 0;
             option = 0; // Reseta opção
             continue;
@@ -102,7 +102,7 @@ int main() {
     return 0;
 }
 
-int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue) {
+int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode) {
     // ----------------------------------------------------
     //       Declaração e inicialização de variáveis
     // ----------------------------------------------------
@@ -152,6 +152,10 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue) {
 
         // Loop de clock
         while (quantumRemaining > 0) {
+            if(mode == STEP_BY_STEP_MODE) {
+                printf("Pressione ENTER para continuar... \n");
+                getchar();
+            }
             currentCycle++; // Atualiza o contador em 1 ciclo
             quantumUsed += 1;
             printf("=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+\n");

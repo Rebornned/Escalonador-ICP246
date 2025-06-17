@@ -11,9 +11,11 @@
 // ============================================================================
 // ############################################################################
 #define PROCESS_LIMIT 50     // Quantidade de processos máxima
-#define QUANTUM_CLOCK 4     // Tempo do clock de cada ciclo
-#define TRUE 1              // 1 é verdadeiro
-#define FALSE 0             // 1 é falso
+#define QUANTUM_CLOCK 4      // Tempo do clock de cada ciclo
+#define TRUE 1               // 1 é verdadeiro
+#define FALSE 0              // 1 é falso
+#define STEP_BY_STEP_MODE 0  // Modo de simulação passo a passo
+#define AUTOMATIC_MODE 1     // Modo de simulação automática
 //-----------------------------------------------------------------------------
 //   Definição de ciclos totais de cada tipo de IO ## NENHUM PODE SER ZERO.
 //-----------------------------------------------------------------------------
@@ -93,4 +95,4 @@ int random_choice(int min, int max); // Retorna um número aleatório entre o in
 // ############################################################################
 //                       Arquivo: {app}/bin/main.c
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue); // Toda a lógica da simualação
+int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode); // Toda a lógica da simualação
