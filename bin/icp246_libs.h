@@ -13,7 +13,7 @@
 #define PROCESS_LIMIT 50     // Quantidade de processos máxima
 #define QUANTUM_CLOCK 4      // Tempo do clock de cada ciclo
 #define TRUE 1               // 1 é verdadeiro
-#define FALSE 0              // 1 é falso
+#define FALSE 0              // 0 é falso
 #define STEP_BY_STEP_MODE 0  // Modo de simulação passo a passo
 #define AUTOMATIC_MODE 1     // Modo de simulação automática
 //-----------------------------------------------------------------------------
@@ -32,6 +32,8 @@
 //-----------------------------------------------------------------------------
 #define MIN_CYCLES_PER_PROCESS 2 // Define o piso de ciclos minimos durante a aleatoriazação do processo
 #define MAX_CYCLES_PER_PROCESS 20 // Define o teto de ciclos máximos durante a aleatoriazação do processo
+#define MIN_CYCLES_FOR_START_PROCESS 1 // Define o piso de ciclos minímos para chegada de um novo processo
+#define MAX_CYCLES_FOR_START_PROCESS 20 // Define o teto de ciclos máximos para chegada de um novo processo
 // ############################################################################
 // ============================================================================
 //                               Estruturas
@@ -57,6 +59,7 @@ typedef struct {
     int priority;           // Nível de prioridade do processo
     int totalCycles;        // Total de ciclos que o processo deve durar
     int remainingCycles;    // Total de ciclos restantes do processo
+    int arrivalCycles;      // Total de ciclos restantes para a entrada do processo
     IO_Request request;     // Requerimento de I/O do processo
     char name[100];         // Nome do processo
     int isActive;           // Se o processo está ativo ou já foi realizado
@@ -87,7 +90,7 @@ void displayQueue(Queue *queue, int details); // Exibe todos os elementos da fil
 // ############################################################################
 //                       Arquivo: {app}/bin/process_libs.c
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-Process newProcess(char *name, int priority, int totalCycles, IO_Request request);
+Process newProcess(char *name, int priority, int totalCycles, IO_Request request, int arrivalCycles);
 Process randomNewProcess(); // Retorna um novo processo totalmente aleatório
 IO_Request newRequest(IOType type, int afterCycles, int required); // Gera um novo request de I/O para ser inserido no processo
 Process cycleProcess(Process process, int *quantumRemaining); // Cicla um processo através do quantum restante
@@ -95,4 +98,4 @@ int random_choice(int min, int max); // Retorna um número aleatório entre o in
 // ############################################################################
 //                       Arquivo: {app}/bin/main.c
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode); // Toda a lógica da simualação
+int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, Queue *arrivalQueue, int mode); // Toda a lógica da simualação

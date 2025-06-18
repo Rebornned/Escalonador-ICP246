@@ -68,8 +68,8 @@ void displayQueue(Queue *queue, int details) {
             printf("=====================================================================\n");
             for(int i=0; i < queue->size; i++) { // Percorre a fila inteira exibindo cada processo presente.
                 Process curr = dequeueProcess(&cloneQueue);
-                printf("Nome: %s | ID: %d | Ciclos totais: %d | Ciclos restantes: %d | Ativo: %d\n", 
-                curr.name, curr.id, curr.totalCycles, curr.remainingCycles, curr.isActive);
+                printf("Nome: %s | ID: %d | Ciclos totais: %d | Ciclos restantes: %d | Ativo: %d | Entrada em %d ciclos\n", 
+                curr.name, curr.id, curr.totalCycles, curr.remainingCycles, curr.isActive, curr.arrivalCycles);
                 printf("Prioridade: %d | After cycles: %d | type: %d | Ativo: %d | Requerido: %d | Ciclos I/O: %d\n",
                 curr.request.afterPriority, curr.request.afterCycles, curr.request.type, curr.request.isActive, curr.request.isRequired, curr.request.remainingCycles);
             }

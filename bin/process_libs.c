@@ -12,18 +12,19 @@ Process randomNewProcess() {
     int requiredIO = random_choice(FALSE, TRUE);
     int typeIndex = random_choice(0,2); // Escolhe um entre os 3 tipos de I/O do vetor
     int afterCycles = random_choice(1, totalCycles-1); // O request I/O deve ser chamado antes do processo finalizar
+    int arrivalCycles = random_choice(MIN_CYCLES_FOR_START_PROCESS, MAX_CYCLES_FOR_START_PROCESS);
     char randomName[100];
     sprintf(randomName, "Random process n=%d", random_choice(1, 99999)); // Seta um nome aleatório
 
     // Criação de request e processos aleatórios
     IO_Request request = newRequest(typesIO[typeIndex], afterCycles, requiredIO); // Cria um request para o pedido aleatório
-    Process process = newProcess(randomName, priority, totalCycles, request); // Cria um novo processo com os valores preenchidos aleatoriamente
+    Process process = newProcess(randomName, priority, totalCycles, request, arrivalCycles); // Cria um novo processo com os valores preenchidos aleatoriamente
 
     return process;
 }
 
 // Retorna um novo processo preenchido com os parametros
-Process newProcess(char *name, int priority, int totalCycles, IO_Request request) {
+Process newProcess(char *name, int priority, int totalCycles, IO_Request request, int arrivalCycles) {
     Process process;
     memset(&process, 0, sizeof(Process));
     if(totalCycles <= 0) {                  // Processos instantâneos não servem para simulação
@@ -36,7 +37,8 @@ Process newProcess(char *name, int priority, int totalCycles, IO_Request request
     process.totalCycles = totalCycles;      // Ciclos totais do processo
     process.remainingCycles = totalCycles;  // Ciclos restantes
     process.request = request;              // I/O do processo.
-    process.isActive = TRUE;                // Processo começa sempre ativo
+    process.arrivalCycles = arrivalCycles;  // Tempo em ciclos até a entrada do processo
+    process.isActive = FALSE;                // Processo começa inativo até ser chamado
     strcpy(process.name, name);             // Copia o nome para o nome do processo
        
     return process;

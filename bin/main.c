@@ -9,10 +9,11 @@ int main() {
     // ----------------------------------------------------
     //           Declaração e inicialização de filas
     // ----------------------------------------------------
-    Queue highQueue, lowQueue, ioQueue;
+    Queue highQueue, lowQueue, ioQueue, arrivalQueue;
     initQueue(&highQueue);
     initQueue(&lowQueue);
     initQueue(&ioQueue);
+    initQueue(&arrivalQueue);
     // ----------------------------------------------------
     //              Declaração de variáveis
     // ----------------------------------------------------
@@ -70,25 +71,22 @@ int main() {
             while(totalProcesses < 1 || totalProcesses > PROCESS_LIMIT) {           
                 printf("Quantos processos deseja simular [1 a 50]? ");
                 scanf("%d", &totalProcesses);
+                getchar();
             }
             printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
             printf("Quantidade de processos escolhidos: %d\n", totalProcesses);
             for(int i=0; i<totalProcesses; i++) {
                 Process newProcess = randomNewProcess();
-                if(newProcess.priority == HIGH_PRIORITY)
-                    enqueueProcess(&highQueue, newProcess);
-                else if(newProcess.priority == LOW_PRIORITY)
-                    enqueueProcess(&lowQueue, newProcess);
+                enqueueProcess(&arrivalQueue, newProcess); // Coloca todos os processos que irão chegar na lista
             }
+
             // ----------------------------------------------------
             //                      Simulação
             // ----------------------------------------------------
             printf("==================================================\n");
-            printf("FILA DE ALTA PRIORIDADE \n");
-            displayQueue(&highQueue, TRUE);
-            printf("FILA DE BAIXA PRIORIDADE \n");
-            displayQueue(&lowQueue , TRUE);
-            startSimulation(&highQueue, &lowQueue, &ioQueue, mode);
+            printf("FILA DE PROCESSOS PREVISTOS \n");
+            displayQueue(&arrivalQueue, TRUE);
+            startSimulation(&highQueue, &lowQueue, &ioQueue, &arrivalQueue, mode);
             totalProcesses = 0;
             option = 0; // Reseta opção
             continue;
@@ -102,7 +100,7 @@ int main() {
     return 0;
 }
 
-int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode) {
+int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, Queue *arrivalQueue, int mode) {
     // ----------------------------------------------------
     //       Declaração e inicialização de variáveis
     // ----------------------------------------------------
@@ -116,6 +114,7 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
     int averageProcessCycles = 0; // Tempo médio por processo
     int ioTypesOcurrences[3] = {0, 0, 0}; 
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++
+    int arrivalSize = arrivalQueue->size; // Salva o tamanho atual da fila de Chegada
     int breakPoint = FALSE; // Ponto de quebra para sair do looping
     int cpuIdle = FALSE; // Controle de ociosidade da CPU
     int quantumUsed = 0; // Quantum utilizado através dos ciclos
@@ -131,7 +130,7 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
     printf("##############################################################\n");
     printf("                    INICIANDO SIMULAÇÃO\n");
     printf("##############################################################\n");
-    while(highQueue->size != 0 || lowQueue->size != 0 || ioQueue->size != 0) { // Enquanto as 3 listas terem processos, o simulador roda.
+    while(highQueue->size != 0 || lowQueue->size != 0 || ioQueue->size != 0 || arrivalQueue->size != 0) { // Enquanto as 3 listas terem processos, o simulador roda.
         if(quantumRemaining == 0) {// Repõe o quantum de clock
             quantumRemaining = QUANTUM_CLOCK;
             cpuIdle = FALSE; // Retira a cpu do modo ocioso
@@ -149,16 +148,15 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
             cpuIdle = TRUE; // CPU Ociosa aguardando processos saírem da I/O
             memset(&currentProcess, 0, sizeof(Process));
         }
+        else if(highQueue->size == 0 && lowQueue->size == 0 && ioQueue->size == 0 && arrivalQueue->size > 0) { // Verifica ainda há processos para chegarem
+            cpuIdle = TRUE; // CPU Ociosa aguardando processos vindos da fila de chegada
+            memset(&currentProcess, 0, sizeof(Process));
+        }
 
         // Loop de clock
         while (quantumRemaining > 0) {
-            if(mode == STEP_BY_STEP_MODE) {
-                printf("Pressione ENTER para continuar... \n");
-                getchar();
-            }
             currentCycle++; // Atualiza o contador em 1 ciclo
-            quantumUsed += 1;
-            printf("=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+\n");
+            printf("\n=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+\n");
             printf("                CICLO ATUAL: %d | QUANTUM: %d\n", currentCycle, quantumRemaining);
             printf("**************************************************************\n");
             printf("FILA DE ALTA PRIORIDADE: ");
@@ -167,9 +165,33 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
             displayQueue(lowQueue , FALSE);
             printf("FILA I/O: ");
             displayQueue(ioQueue , FALSE);
-            printf("****************************************************************\n");
+            printf("**************************************************************\n");
+            if(arrivalQueue->size > 0) { // Roda em paralelo, faz o processo chegar a simulação
+                for(int i=0; i<arrivalSize; i++) {
+                    if(arrivalQueue->data[i].arrivalCycles > 0) {
+                        arrivalQueue->data[i].arrivalCycles -= 1; // Decrementa os ciclos para chegada do processo
+                    }
+                    if(arrivalQueue->data[i].arrivalCycles == 0 && arrivalQueue->data[i].isActive == FALSE) {
+                        arrivalQueue->data[i].isActive = TRUE; // Ativa o processo para ser inserido nas filas
+                        if(arrivalQueue->data[i].priority == HIGH_PRIORITY) {
+                            printf("Processo ID: %d | Situação: Iniciado | Enviado para fila de Alta prioridade\n", arrivalQueue->data[i].id);
+                            enqueueProcess(highQueue, arrivalQueue->data[i]);
+                        }
+                        else if(arrivalQueue->data[i].priority == LOW_PRIORITY) {
+                            printf("Processo ID: %d | Situação: Iniciado | Enviado para fila de Baixa prioridade\n", arrivalQueue->data[i].id);
+                            enqueueProcess(lowQueue, arrivalQueue->data[i]);
+                        }
+                        printf("$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$\n");
+                        if(cpuIdle) // Quebra a ociosiodade da CPU
+                            breakPoint = TRUE;
+                        arrivalQueue->size -= 1; // Menos um processo precisa chegar
+                    } 
+                }
+            }
             if(!cpuIdle) { // Se a cpu não está em espera, ocorre tudo normalmente
-                printf("Executando Processo ID: %d\n", currentProcess.id);
+                printf("##############################################################\n");
+                printf("                Executando Processo ID: %d\n", currentProcess.id);
+                printf("##############################################################\n");
                 printf("Ciclos totais: %d | Ciclos restantes: (%d - %d) -> %d\n",
                 currentProcess.totalCycles, currentProcess.remainingCycles, 1, currentProcess.remainingCycles-1);
                 printf("Possui I/O: %s\n", boolTypes[currentProcess.request.isRequired]);
@@ -177,7 +199,8 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
                     printf("Tipo de I/O: %s | Ciclos I/O: %d | Ciclos restantes para I/O: %d\n", 
                     ioTypes[currentProcess.request.type], currentProcess.request.remainingCycles, currentProcess.request.afterCycles);
                 currentProcess = cycleProcess(currentProcess, &quantumRemaining); // Executa o processo por um ciclo
-                printf("---------------------------------------------------------------\n");
+                quantumUsed += 1;
+                printf("##############################################################\n");
                 // Checagem de finalização de processo
                 if(currentProcess.isActive == FALSE) { // Processo finalizado
                     printf("Processo ID: %d | Situação: Finalizado | Removido | Quantum utilizado: %d\n", currentProcess.id, quantumUsed);
@@ -186,8 +209,8 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
                     breakPoint = TRUE;
                 }
                 // Checagem de ciclos de I/O
-                else if(!breakPoint && currentProcess.request.isRequired && currentProcess.request.afterCycles == 0 && !currentProcess.request.isActive && currentProcess.request.remainingCycles > 0) { // Parar o processo e enviar para fila de I/O
-                    printf("Processo ID: %d | Situação: Paralisado | Enviado para a fila de I/O\n", currentProcess.id);
+                else if(currentProcess.request.isRequired && currentProcess.request.afterCycles == 0 && !currentProcess.request.isActive && currentProcess.request.remainingCycles > 0) { // Parar o processo e enviar para fila de I/O
+                    printf("Processo ID: %d | Situação: Paralisado | Enviado -> fila de I/O\n", currentProcess.id);
                     quantumUsed = 0;
                     currentProcess.request.isActive = TRUE; // Ativa o modo espera do processo para I/O
                     enqueueProcess(ioQueue, currentProcess);
@@ -196,17 +219,18 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
                     breakPoint = TRUE;
                 }
                 // Checagem de premptação de processo
-                else if(!breakPoint && quantumRemaining == 0 && currentProcess.remainingCycles > 0) { // Processo não completado, enviado para baixa prioridade
-                    printf("Processo ID: %d | Situação: Premptado | Enviado para a fila de baixa prioridade\nQuantum utilizado: %d\n", currentProcess.id, quantumUsed);
+                else if(quantumRemaining == 0 && currentProcess.remainingCycles > 0) { // Processo não completado, enviado para baixa prioridade
+                    printf("Processo ID: %d | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: %d\n", currentProcess.id, quantumUsed);
                     quantumUsed = 0;
                     enqueueProcess(lowQueue, currentProcess);
                     premptionOcurrences += 1;
                     breakPoint = TRUE;
                 }
+                printf("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=\n");
             }
             else { // CPU em espera - Executa apenas os ciclos de I/O
                 printf("CPU em espera, aguardando até o proximo Quantum.\n");
-                printf("---------------------------------------------------------------\n");
+                printf("--------------------------------------------------------------\n");
                 idleCpuOcurrences += 1; // Registra a quantidade de ciclos de ociosidade
                 quantumRemaining -= 1; // Decrementa o quantum mesmo se a cpu estiver em modo de espera
             }
@@ -221,12 +245,12 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
                         if(currentIO.request.afterPriority == HIGH_PRIORITY) {
                             currentIO.request.isActive = FALSE; // Desativa o request de I/O
                             enqueueProcess(highQueue, currentIO); // Processo retorna a fila de Alta prioridade
-                            printf("Processo ID: %d | Situação: I/O finalizado | Enviado para a fila de Alta prioridade\n", currentIO.id);
+                            printf("Processo ID: %d | Situação: I/O finalizado | Enviado -> fila de Alta prioridade\n", currentIO.id);
                         }
                         else if(currentIO.request.afterPriority == LOW_PRIORITY) { 
                             currentIO.request.isActive = FALSE; // Desativa o request de I/O
                             enqueueProcess(lowQueue, currentIO); // Processo retorna a fila de Baixa prioridade
-                            printf("Processo ID: %d | Situação: I/O finalizado | Enviado para a fila de Baixa prioridade\n", currentIO.id);
+                            printf("Processo ID: %d | Situação: I/O finalizado | Enviado -> fila de Baixa prioridade\n", currentIO.id);
                         }
                     }
                     else if(currentIO.request.remainingCycles > 0) { // Se ainda restarem ciclos dentro do I/O
@@ -234,6 +258,13 @@ int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, int mode)
                     }
                 }
             }
+            
+            if(mode == STEP_BY_STEP_MODE) {
+                printf("Pressione ENTER para continuar... \n");
+                printf("*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**+*+*+**+*+**+*+*+*+*+*\n");
+                getchar();
+            }
+
             if(breakPoint) { // Quando um processo já foi finalizado, premptado ou enviado para I/O
                 breakPoint = FALSE;
                 break;
