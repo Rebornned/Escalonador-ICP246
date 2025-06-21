@@ -5,7 +5,7 @@ Process randomNewProcess() {
     IOType typesIO[3] = {DISK, MAGNETIC_TAPE, PRINTER};  // Vetor de tipos de I/O
     
     // Processo
-    int priority = random_choice(LOW_PRIORITY, HIGH_PRIORITY);  // Escolhe uma prioridade para o processo
+    int priority = HIGH_PRIORITY;  // Todos os novos processos começam com prioridade máxima
     int totalCycles = random_choice(MIN_CYCLES_PER_PROCESS, MAX_CYCLES_PER_PROCESS); // Escolhe um total de ciclos por processo
 
     // Request I/O

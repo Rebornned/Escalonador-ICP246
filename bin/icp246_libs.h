@@ -3,7 +3,10 @@
 #include <time.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include <stdarg.h>
+#include <windows.h>
 #include <locale.h>
+#include <wchar.h>
 
 // ############################################################################
 // ============================================================================
@@ -32,7 +35,7 @@
 //-----------------------------------------------------------------------------
 #define MIN_CYCLES_PER_PROCESS 2 // Define o piso de ciclos minimos durante a aleatoriazação do processo
 #define MAX_CYCLES_PER_PROCESS 20 // Define o teto de ciclos máximos durante a aleatoriazação do processo
-#define MIN_CYCLES_FOR_START_PROCESS 1 // Define o piso de ciclos minímos para chegada de um novo processo
+#define MIN_CYCLES_FOR_START_PROCESS 0 // Define o piso de ciclos minímos para chegada de um novo processo
 #define MAX_CYCLES_FOR_START_PROCESS 20 // Define o teto de ciclos máximos para chegada de um novo processo
 // ############################################################################
 // ============================================================================
@@ -82,10 +85,9 @@ typedef struct {
 void initQueue(Queue *queue); // Inicia a fila com todos os dados zerados
 int enqueueProcess(Queue *queue, Process process); // Enfielira um processo na fila
 Process dequeueProcess(Queue *queue); // Desenfileira um processo na fila
-Process getFrontProcess(Queue *queue); // Retorno o primeiro processo da fila sem altera-la
 int isFull(Queue *queue); // Verifica se a fila está cheia
 int isEmpty(Queue *queue); // Verifica se a fila está vazia
-void displayQueue(Queue *queue, int details); // Exibe todos os elementos da fila sem altera-la
+void displayQueue(FILE *log, Queue *queue, int details); // Exibe todos os elementos da fila sem altera-la
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
 // ############################################################################
 //                       Arquivo: {app}/bin/process_libs.c
@@ -98,4 +100,10 @@ int random_choice(int min, int max); // Retorna um número aleatório entre o in
 // ############################################################################
 //                       Arquivo: {app}/bin/main.c
 // *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
-int startSimulation(Queue *highQueue, Queue* lowQueue, Queue *ioQueue, Queue *arrivalQueue, int mode); // Toda a lógica da simualação
+int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue, Queue *arrivalQueue, int mode); // Toda a lógica da simualação
+// ############################################################################
+//                       Arquivo: {app}/bin/files_libs.c
+// *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-
+FILE *createLogFile(); // Cria um novo arquivo de log txt com o tempo atual
+void getCurrentDate(char *destiny, size_t size); // Captura o tempo atual do sistema e coloca em string
+int logPrintf(FILE *logFile, const char *format, ...); // Printa no terminal e escreve num arquivo de log
