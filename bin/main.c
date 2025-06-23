@@ -18,7 +18,6 @@ int main() {
     // ----------------------------------------------------
     //              Declaração de variáveis
     // ----------------------------------------------------
-    FILE *log = createLogFile();
     int option = 0, menu_break = FALSE, mode, totalProcesses = 0;
     char *modesAvailable[50] = {"Passo a Passo", "Automático"};
     // ----------------------------------------------------
@@ -97,6 +96,7 @@ int main() {
             // ----------------------------------------------------
             //                      Simulação
             // ----------------------------------------------------
+            FILE *log = createLogFile();
             logPrintf(log, "==================================================\n");
             logPrintf(log, "FILA DE PROCESSOS PREVISTOS \n");
             displayQueue(log, &arrivalQueue, TRUE);
