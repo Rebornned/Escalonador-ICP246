@@ -13,7 +13,7 @@ Permite observar como a CPU, o I/O e as prioridades interagem ao longo da execu�
 
 ## 📸 Exemplo de execução
 
-![Exemplo do terminal com o simulador rodando](assets/screenshots/menu.png)
+![Exemplo do terminal com o simulador rodando](assets/screenshots/menu.PNG)
 
 ---
 
