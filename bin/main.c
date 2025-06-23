@@ -1,7 +1,7 @@
 #include "icp246_libs.h"
 
 // Linha de acesso CD: C:/Users/Dhemerson/Desktop/Programacao/GKT_C/Escalonador-ICP246/bin
-// Linha de compilação: gcc -g -fexec-charset=UTF-8 -o  main.exe main.c queue_libs.c process_libs.c
+// Linha de compilação: gcc -g -o main.exe main.c queue_libs.c process_libs.c files_libs.c
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
@@ -218,8 +218,8 @@ int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue
                 currentProcess.totalCycles, currentProcess.remainingCycles, 1, currentProcess.remainingCycles-1);
                 logPrintf(log, "Possui I/O: %s\n", boolTypes[currentProcess.request.isRequired]);
                 if(currentProcess.request.isRequired == TRUE) 
-                    logPrintf(log, "Tipo de I/O: %s | Ciclos I/O: %d | Ciclos restantes para I/O: %d\n", 
-                    ioTypes[currentProcess.request.type], currentProcess.request.remainingCycles, currentProcess.request.afterCycles);
+                    logPrintf(log, "Tipo de I/O: %s | Ciclos I/O: %d | Ciclos restantes para I/O: (%d - 1) -> %d\n", 
+                    ioTypes[currentProcess.request.type], currentProcess.request.remainingCycles, currentProcess.request.afterCycles, currentProcess.request.afterCycles-1);
                 currentProcess = cycleProcess(currentProcess, &quantumRemaining); // Executa o processo por um ciclo
                 quantumUsed += 1;
                 logPrintf(log, "##############################################################\n");
@@ -261,7 +261,7 @@ int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue
                 for(int i=0; i<ioSize; i++) {
                     currentIO = dequeueProcess(ioQueue);
                     currentIO.request.remainingCycles -= 1; // Decrementa um ciclo do processo dentro da I/O
-                    logPrintf(log, "Processo ID: %d | Situação: Aguardando I/O | Ciclos I/O restantes: %d\n", currentIO.id, currentIO.request.remainingCycles);
+                    logPrintf(log, "Processo ID: %d | Situação: Aguardando I/O | Ciclos I/O restantes: (%d - 1) -> %d\n", currentIO.id, currentIO.request.remainingCycles+1, currentIO.request.remainingCycles);
                     if(currentIO.request.remainingCycles == 0) { // Se os ciclos de I/O já foram encerrados
                         if(currentIO.request.afterPriority == HIGH_PRIORITY) {
                             currentIO.request.isActive = FALSE; // Desativa o request de I/O

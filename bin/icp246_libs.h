@@ -6,7 +6,6 @@
 #include <stdarg.h>
 #include <windows.h>
 #include <locale.h>
-#include <wchar.h>
 
 // ############################################################################
 // ============================================================================
@@ -33,9 +32,9 @@
 //-----------------------------------------------------------------------------
 //                         Definição de Randomização
 //-----------------------------------------------------------------------------
-#define MIN_CYCLES_PER_PROCESS 2 // Define o piso de ciclos minimos durante a aleatoriazação do processo
-#define MAX_CYCLES_PER_PROCESS 20 // Define o teto de ciclos máximos durante a aleatoriazação do processo
-#define MIN_CYCLES_FOR_START_PROCESS 0 // Define o piso de ciclos minímos para chegada de um novo processo
+#define MIN_CYCLES_PER_PROCESS 2        // Define o piso de ciclos minimos durante a aleatoriazação do processo
+#define MAX_CYCLES_PER_PROCESS 20       // Define o teto de ciclos máximos durante a aleatoriazação do processo
+#define MIN_CYCLES_FOR_START_PROCESS 0  // Define o piso de ciclos minímos para chegada de um novo processo
 #define MAX_CYCLES_FOR_START_PROCESS 20 // Define o teto de ciclos máximos para chegada de um novo processo
 // ############################################################################
 // ============================================================================

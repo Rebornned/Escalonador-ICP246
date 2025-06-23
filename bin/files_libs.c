@@ -1,9 +1,6 @@
 #include "icp246_libs.h"
 
-FILE *createLogFile();
-void getCurrentDate(char *destiny, size_t size);
-int logPrintf(FILE *logFile, const char *format, ...);
-
+// Cria um log com base no momento atual da máquina
 FILE *createLogFile() {
     char currDate[32], path[150];
     getCurrentDate(currDate, sizeof(currDate));
@@ -13,14 +10,16 @@ FILE *createLogFile() {
     return newLog;
 }
 
+// Pega o momento atual da máquina e passa para uma string
 void getCurrentDate(char *destiny, size_t size) {
-    time_t agora = time(NULL);                // Pega o tempo atual
-    struct tm *info = localtime(&agora);      // Converte para data local
+    time_t now = time(NULL);                // Pega o tempo atual
+    struct tm *info = localtime(&now);      // Converte para data local
 
     // Formata como "dia/mes/anos hora:minuto:segundo"
     strftime(destiny, size, "%d_%m_%Y-%H_%M_%S", info);
 }
 
+// Recebe um arquivo de log e coloca uma string dentro dele, também printa a string.
 int logPrintf(FILE *logFile, const char *format, ...) {
     char buffer[1024]; // buffer para montar a string
     va_list args;

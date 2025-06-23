@@ -45,11 +45,12 @@ int isEmpty(Queue *queue) {
     return FALSE; // Fila contém elementos
 }
 
+// Mostra todos os elementos da fila, e cria um log dos seus dados, pode ser detalhado ou não
 void displayQueue(FILE *log, Queue *queue, int details) {
     Queue cloneQueue;
     memcpy(&cloneQueue, queue, sizeof(Queue)); // Cria um clone da fila, para não altera-la ao exibir.
     if(!isEmpty(queue)) {
-        if(details == TRUE) {
+        if(details == TRUE) { // Impressão da fila detalhada
             logPrintf(log, "=====================================================================\n");
             logPrintf(log, "Front: %d | Rear: %d | Tamanho atual: %d\n", queue->front, queue->rear, queue->size);
             logPrintf(log, "=====================================================================\n");
@@ -63,7 +64,7 @@ void displayQueue(FILE *log, Queue *queue, int details) {
             logPrintf(log, "*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
             return;
         }
-        else {
+        else { // Impressão da fila de forma mais simplificada
             logPrintf(log, "[");
             for(int i=0; i < queue->size; i++) { // Percorre a fila inteira exibindo cada processo presente.
                 Process curr = dequeueProcess(&cloneQueue);
