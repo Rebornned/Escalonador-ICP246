@@ -5,7 +5,6 @@ FILE *createLogFile() {
     char currDate[32], path[150];
     getCurrentDate(currDate, sizeof(currDate));
     sprintf(path, "../logs/log_%s.txt", currDate);
-    printf("path: %s\n", path);
     FILE *newLog = fopen(path, "w");
     return newLog;
 }
