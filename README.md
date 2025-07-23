@@ -2,7 +2,6 @@
 
 - 📚 Trabalho acadêmico desenvolvido para a disciplina de **Arquitetura de Computadores e Sistemas Operacionais - ICP246 (2025-1)**  
 - 🎓 Universidade Federal do Rio de janeiro ( UFRJ )  
-- 👨‍💻 Grupo: Grupo 14
 
 ---
 
