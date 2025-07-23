@@ -1,0 +1,1265 @@
+==================================================
+FILA DE PROCESSOS PREVISTOS 
+=====================================================================
+Front: 5 | Rear: 9 | Tamanho atual: 4
+=====================================================================
+Nome: manual-2 | ID: 25674 | Ciclos totais: 12 | Ciclos restantes: 12 | Ativo: 0 | Entrada em 7 ciclos
+Prioridade: 1 | After cycles: 6 | type: 1 | Ativo: 0 | Requerido: 1 | Ciclos I/O: 7
+Nome: manual-3 | ID: 30006 | Ciclos totais: 16 | Ciclos restantes: 16 | Ativo: 0 | Entrada em 12 ciclos
+Prioridade: 1 | After cycles: 3 | type: 2 | Ativo: 0 | Requerido: 1 | Ciclos I/O: 5
+Nome: manual-4 | ID: 3003 | Ciclos totais: 20 | Ciclos restantes: 20 | Ativo: 0 | Entrada em 18 ciclos
+Prioridade: 0 | After cycles: 0 | type: 0 | Ativo: 0 | Requerido: 0 | Ciclos I/O: 0
+Nome: manual-5 | ID: 3197 | Ciclos totais: 3 | Ciclos restantes: 3 | Ativo: 0 | Entrada em 2 ciclos
+Prioridade: 1 | After cycles: 2 | type: 1 | Ativo: 0 | Requerido: 1 | Ciclos I/O: 7
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+==================================================
+FILA DE ALTA PRIORIDADE
+=====================================================================
+Front: 0 | Rear: 1 | Tamanho atual: 1
+=====================================================================
+Nome: manual-1 | ID: 987 | Ciclos totais: 13 | Ciclos restantes: 13 | Ativo: 1 | Entrada em 0 ciclos
+Prioridade: 0 | After cycles: 3 | type: 0 | Ativo: 0 | Requerido: 1 | Ciclos I/O: 4
+*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*
+##############################################################
+                    INICIANDO SIMULAÇÃO
+##############################################################
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 1 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (13 - 1) -> 12
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 4 | Ciclos restantes para I/O: (3 - 1) -> 2
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 2 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+Processo ID: 3197 | Situação: Iniciado | Enviado para fila de Alta prioridade
+$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (12 - 1) -> 11
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 4 | Ciclos restantes para I/O: (2 - 1) -> 1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 3 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (11 - 1) -> 10
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 4 | Ciclos restantes para I/O: (1 - 1) -> 0
+##############################################################
+Processo ID: 987 | Situação: Paralisado | Enviado -> fila de I/O
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 987 | Situação: Aguardando I/O | Ciclos I/O restantes: (4 - 1) -> 3
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 4 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: [| ID: 987 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 987 | Situação: Aguardando I/O | Ciclos I/O restantes: (3 - 1) -> 2
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 5 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: [| ID: 987 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3197
+##############################################################
+Ciclos totais: 3 | Ciclos restantes: (3 - 1) -> 2
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (2 - 1) -> 1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 987 | Situação: Aguardando I/O | Ciclos I/O restantes: (2 - 1) -> 1
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 6 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: [| ID: 987 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3197
+##############################################################
+Ciclos totais: 3 | Ciclos restantes: (2 - 1) -> 1
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (1 - 1) -> 0
+##############################################################
+Processo ID: 3197 | Situação: Paralisado | Enviado -> fila de I/O
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 987 | Situação: Aguardando I/O | Ciclos I/O restantes: (1 - 1) -> 0
+Processo ID: 987 | Situação: I/O finalizado | Enviado -> fila de Baixa prioridade
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (7 - 1) -> 6
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 7 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+Processo ID: 25674 | Situação: Iniciado | Enviado para fila de Alta prioridade
+$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (6 - 1) -> 5
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 8 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 25674 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (5 - 1) -> 4
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 9 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (12 - 1) -> 11
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (6 - 1) -> 5
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (4 - 1) -> 3
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 10 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (11 - 1) -> 10
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (5 - 1) -> 4
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (3 - 1) -> 2
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 11 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (10 - 1) -> 9
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (4 - 1) -> 3
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (2 - 1) -> 1
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 12 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 ]
+FILA I/O: [| ID: 3197 ]
+**************************************************************
+Processo ID: 30006 | Situação: Iniciado | Enviado para fila de Alta prioridade
+$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (9 - 1) -> 8
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (3 - 1) -> 2
+##############################################################
+Processo ID: 25674 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 3197 | Situação: Aguardando I/O | Ciclos I/O restantes: (1 - 1) -> 0
+Processo ID: 3197 | Situação: I/O finalizado | Enviado -> fila de Alta prioridade
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 13 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (16 - 1) -> 15
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 5 | Ciclos restantes para I/O: (3 - 1) -> 2
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 14 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (15 - 1) -> 14
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 5 | Ciclos restantes para I/O: (2 - 1) -> 1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 15 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (14 - 1) -> 13
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 5 | Ciclos restantes para I/O: (1 - 1) -> 0
+##############################################################
+Processo ID: 30006 | Situação: Paralisado | Enviado -> fila de I/O
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 30006 | Situação: Aguardando I/O | Ciclos I/O restantes: (5 - 1) -> 4
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 16 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3197 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: [| ID: 30006 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 30006 | Situação: Aguardando I/O | Ciclos I/O restantes: (4 - 1) -> 3
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 17 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: [| ID: 30006 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3197
+##############################################################
+Ciclos totais: 3 | Ciclos restantes: (1 - 1) -> 0
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 3197 | Situação: Finalizado | Removido | Quantum utilizado: 1
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 30006 | Situação: Aguardando I/O | Ciclos I/O restantes: (3 - 1) -> 2
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 18 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: [| ID: 30006 ]
+**************************************************************
+Processo ID: 3003 | Situação: Iniciado | Enviado para fila de Alta prioridade
+$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$$=$=$=$=$=$=$=$=$=$=$=$=$=$=$=$
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 30006 | Situação: Aguardando I/O | Ciclos I/O restantes: (2 - 1) -> 1
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 19 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3003 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: [| ID: 30006 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 30006 | Situação: Aguardando I/O | Ciclos I/O restantes: (1 - 1) -> 0
+Processo ID: 30006 | Situação: I/O finalizado | Enviado -> fila de Alta prioridade
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 20 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 3003 | ID: 30006 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 21 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 30006 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (20 - 1) -> 19
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 22 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 30006 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (19 - 1) -> 18
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 23 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 30006 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (18 - 1) -> 17
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 24 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: [| ID: 30006 ]
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (17 - 1) -> 16
+Possui I/O: Falso
+##############################################################
+Processo ID: 3003 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 25 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (13 - 1) -> 12
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 26 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (12 - 1) -> 11
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 27 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (11 - 1) -> 10
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 28 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 25674 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (10 - 1) -> 9
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 30006 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 29 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (10 - 1) -> 9
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 30 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (9 - 1) -> 8
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 31 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (8 - 1) -> 7
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 32 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (7 - 1) -> 6
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 987 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 33 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (8 - 1) -> 7
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (2 - 1) -> 1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 34 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (7 - 1) -> 6
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 7 | Ciclos restantes para I/O: (1 - 1) -> 0
+##############################################################
+Processo ID: 25674 | Situação: Paralisado | Enviado -> fila de I/O
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (7 - 1) -> 6
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 35 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (6 - 1) -> 5
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 36 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (5 - 1) -> 4
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 37 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (16 - 1) -> 15
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (4 - 1) -> 3
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 38 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (15 - 1) -> 14
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (3 - 1) -> 2
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 39 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (14 - 1) -> 13
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (2 - 1) -> 1
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 40 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 ]
+FILA I/O: [| ID: 25674 ]
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (13 - 1) -> 12
+Possui I/O: Falso
+##############################################################
+Processo ID: 3003 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+Processo ID: 25674 | Situação: Aguardando I/O | Ciclos I/O restantes: (1 - 1) -> 0
+Processo ID: 25674 | Situação: I/O finalizado | Enviado -> fila de Alta prioridade
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 41 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (6 - 1) -> 5
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 42 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (5 - 1) -> 4
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 43 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (4 - 1) -> 3
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 44 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (3 - 1) -> 2
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 25674 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 45 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (9 - 1) -> 8
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 46 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (8 - 1) -> 7
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 47 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (7 - 1) -> 6
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 48 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 | ID: 25674 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (6 - 1) -> 5
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 30006 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 49 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 25674 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (6 - 1) -> 5
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 50 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 25674 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (5 - 1) -> 4
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 51 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 25674 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (4 - 1) -> 3
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 52 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 25674 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (3 - 1) -> 2
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 987 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 53 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (12 - 1) -> 11
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 54 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (11 - 1) -> 10
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 55 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (10 - 1) -> 9
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 56 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 25674 | ID: 30006 | ID: 987 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (9 - 1) -> 8
+Possui I/O: Falso
+##############################################################
+Processo ID: 3003 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 57 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (2 - 1) -> 1
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 58 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 25674
+##############################################################
+Ciclos totais: 12 | Ciclos restantes: (1 - 1) -> 0
+Possui I/O: Verdadeiro
+Tipo de I/O: Fita magnética | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 25674 | Situação: Finalizado | Removido | Quantum utilizado: 2
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 59 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 60 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 | ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 61 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (5 - 1) -> 4
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 62 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (4 - 1) -> 3
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 63 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (3 - 1) -> 2
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 64 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 987 | ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (2 - 1) -> 1
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 30006 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 65 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (2 - 1) -> 1
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 66 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 987
+##############################################################
+Ciclos totais: 13 | Ciclos restantes: (1 - 1) -> 0
+Possui I/O: Verdadeiro
+Tipo de I/O: Disco | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 987 | Situação: Finalizado | Removido | Quantum utilizado: 2
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 67 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 68 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 | ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 69 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (8 - 1) -> 7
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 70 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (7 - 1) -> 6
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 71 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (6 - 1) -> 5
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 72 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 30006 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (5 - 1) -> 4
+Possui I/O: Falso
+##############################################################
+Processo ID: 3003 | Situação: Premptado | Enviado -> fila de baixa prioridade | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 73 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 30006
+##############################################################
+Ciclos totais: 16 | Ciclos restantes: (1 - 1) -> 0
+Possui I/O: Verdadeiro
+Tipo de I/O: Impressora | Ciclos I/O: 0 | Ciclos restantes para I/O: (0 - 1) -> -1
+##############################################################
+Processo ID: 30006 | Situação: Finalizado | Removido | Quantum utilizado: 1
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 74 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 75 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 76 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: [| ID: 3003 ]
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+CPU em espera, aguardando até o proximo Quantum.
+--------------------------------------------------------------
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 77 | QUANTUM: 4
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (4 - 1) -> 3
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 78 | QUANTUM: 3
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (3 - 1) -> 2
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 79 | QUANTUM: 2
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (2 - 1) -> 1
+Possui I/O: Falso
+##############################################################
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+
+=+=+=+=+=+=++=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=++=+=+=+=+=+=+
+                CICLO ATUAL: 80 | QUANTUM: 1
+**************************************************************
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+**************************************************************
+##############################################################
+                Executando Processo ID: 3003
+##############################################################
+Ciclos totais: 20 | Ciclos restantes: (1 - 1) -> 0
+Possui I/O: Falso
+##############################################################
+Processo ID: 3003 | Situação: Finalizado | Removido | Quantum utilizado: 4
+#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=
+==================================================
+FILA DE ALTA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA DE BAIXA PRIORIDADE: Fila vazia, nada a imprimir.
+FILA I/O: Fila vazia, nada a imprimir.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                       Estatísticas Finais                    
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Total de ciclos executados: 80
+Total de processos finalizados: 5
+Preempções registradas: 11
+Operações de I/O realizadas: 4
+Ciclos com CPU ociosa: 16
+Ciclos médios por processo: 16.00
+Throughput / Processos por ciclo: 0.062500
+Processos que retornaram da I/O: 4
+Tipos de I/O utilizados:
+  - Disco: 1
+  - Fita magnética: 2
+  - Impressora: 1
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+==============================================================

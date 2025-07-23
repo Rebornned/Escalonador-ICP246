@@ -1,7 +1,7 @@
 #include "icp246_libs.h"
 
 // Linha de acesso CD: C:/Users/Dhemerson/Desktop/Programacao/GKT_C/Escalonador-ICP246/bin
-// Linha de compilação: gcc -g -o main.exe main.c queue_libs.c process_libs.c files_libs.c
+// Linha de compilação: gcc -g -o main_teste.exe main_teste.c queue_libs.c process_libs.c files_libs.c
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
@@ -10,111 +10,62 @@ int main() {
     // ----------------------------------------------------
     //           Declaração e inicialização de filas
     // ----------------------------------------------------
+    FILE *log = createLogFile();
     Queue highQueue, lowQueue, ioQueue, arrivalQueue;
     initQueue(&highQueue);
     initQueue(&lowQueue);
     initQueue(&ioQueue);
     initQueue(&arrivalQueue);
     // ----------------------------------------------------
-    //              Declaração de variáveis
+    //              Inserção manual de processos
     // ----------------------------------------------------
-    int option = 0, menu_break = FALSE, mode, totalProcesses = 0;
-    char *modesAvailable[50] = {"Passo a Passo", "Automático"};
-    // ----------------------------------------------------
-    //                        Menu
-    // ----------------------------------------------------
-    while(!menu_break) { // Enquanto o programa rodar, menu funciona 
-        printf("*=*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
-        printf("             Simulador - Escalonador de processos             \n");
-        printf("*=*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
-        printf("    Seja bem vindo (a) ao nosso simulador de escalonador      \n");
-        printf("*=*=*=*=*=*=*=*=*=*=*=*=**=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
-        // *************************************************************************
-        //                 Primeira camada do menu - Tipo de simulação
-        // *************************************************************************
-        printf("[1] Passo a Passo\n");
-        printf("[2] Automático\n");
-        printf("[3] Sair\n");
-        while(option != 1 && option != 2 && option != 3) {
-            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-            printf("Opção: ");
-            scanf("%d", &option);
-        }
-        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-        if(option == 1) {
-            mode = 0;
-        }
-        else if(option == 2) {
-            mode = 1;
-        }
-        else if(option == 3) {
-            printf("##############################################################\n");
-            printf("Finalizando programa...\n");
-            exit(0);
-        }
-        option = 0; // Reseta opção
-        // *************************************************************************
-        //              Segunda camada do menu - Iniciar simulação
-        // *************************************************************************
-        printf("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#\n");
-        printf("Modo selecionado: %s | Processos: Aleatórios\n", modesAvailable[mode]);
-        printf("#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#\n");
-        printf("[1] Iniciar Simulação\n");
-        printf("[2] Cancelar\n");
-        
-        while(option != 1 && option != 2) {
-            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-            printf("Opção: ");
-            scanf("%d", &option);
-        }
-        printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-        if(option == 1) {
-            while(totalProcesses < 1 || totalProcesses > PROCESS_LIMIT) {           
-                printf("Quantos processos deseja simular [1 a 50]? ");
-                scanf("%d", &totalProcesses);
-                getchar();
-            }
-            printf("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n");
-            printf("Quantidade de processos escolhidos: %d\n", totalProcesses);
-            for(int i=0; i<totalProcesses; i++) {
-                Process newProcess = randomNewProcess();
-                 // Checa se há processos que entrarão no ciclo 0
-                if(newProcess.arrivalCycles == 0 && newProcess.isActive == FALSE) { 
-                    newProcess.isActive = TRUE; // Ativa o processo para ser inserido nas filas
-                    if(newProcess.priority == HIGH_PRIORITY) {
-                        enqueueProcess(&highQueue, newProcess);
-                    }
-                    else if(newProcess.priority == LOW_PRIORITY) {
-                        enqueueProcess(&lowQueue, newProcess);
-                    }
-                }
-                else if(newProcess.arrivalCycles > 0)
-                    enqueueProcess(&arrivalQueue, newProcess); // Coloca todos os processos que irão chegar na lista
-            }
+    IO_Request newRequest1 = newRequest(DISK, 3, TRUE);
+    IO_Request newRequest2 = newRequest(MAGNETIC_TAPE, 6, TRUE);
+    IO_Request newRequest3 = newRequest(PRINTER, 3, TRUE);
+    IO_Request newRequest4 = newRequest(DISK, 3, FALSE);
+    IO_Request newRequest5 = newRequest(MAGNETIC_TAPE, 2, TRUE);
 
-        
-            // ----------------------------------------------------
-            //                      Simulação
-            // ----------------------------------------------------
-            FILE *log = createLogFile();
-            logPrintf(log, "=====================================================================\n");
-            logPrintf(log, "                    FILA DE PROCESSOS PREVISTOS \n");
-            displayQueue(log, &arrivalQueue, TRUE);
-            logPrintf(log, "=====================================================================\n");
-            logPrintf(log, "                      FILA DE ALTA PRIORIDADE\n");
-            if(!isEmpty(&highQueue))
-                displayQueue(log, &highQueue, TRUE);
-            logPrintf(log, "\n");
-            startSimulation(log, &highQueue, &lowQueue, &ioQueue, &arrivalQueue, mode);
-            totalProcesses = 0;
-            option = 0; // Reseta opção
-            continue;
+    Process newProcess1 = newProcess("manual-1", HIGH_PRIORITY, 13, newRequest1, 0);
+    Process newProcess2 = newProcess("manual-2", HIGH_PRIORITY, 12, newRequest2, 7);
+    Process newProcess3 = newProcess("manual-3", HIGH_PRIORITY, 16, newRequest3, 12);
+    Process newProcess4 = newProcess("manual-4", HIGH_PRIORITY, 20, newRequest4, 18);
+    Process newProcess5 = newProcess("manual-5", HIGH_PRIORITY, 3, newRequest5, 2);
+
+    enqueueProcess(&arrivalQueue, newProcess1); // Coloca todos os processos que irão chegar na lista
+    enqueueProcess(&arrivalQueue, newProcess2); // Coloca todos os processos que irão chegar na lista
+    enqueueProcess(&arrivalQueue, newProcess3); // Coloca todos os processos que irão chegar na lista
+    enqueueProcess(&arrivalQueue, newProcess4); // Coloca todos os processos que irão chegar na lista
+    enqueueProcess(&arrivalQueue, newProcess5); // Coloca todos os processos que irão chegar na lista
+
+    int arrivalSize = arrivalQueue.size; // Salva o tamanho atual da fila de Chegada
+
+    // Checa se há processos que entrarão no ciclo 0
+    for(int i=0; i<arrivalSize; i++) {
+        Process currP = dequeueProcess(&arrivalQueue); // Processo atual verificado
+        if(currP.arrivalCycles == 0 && currP.isActive == FALSE) { 
+            currP.isActive = TRUE; // Ativa o processo para ser inserido nas filas
+            if(currP.priority == HIGH_PRIORITY) {
+                enqueueProcess(&highQueue, currP);
+            }
+            else if(currP.priority == LOW_PRIORITY) {
+                enqueueProcess(&lowQueue, currP);
+            }
         }
-        else if(option == 2) { // Cancela e retorna ao menu principal
-            option = 0; // Reseta opção
-            continue;
-        }
-    }
+        else if ( currP.arrivalCycles > 0)
+            enqueueProcess(&arrivalQueue, currP);
+    } 
+    // ----------------------------------------------------
+    //                      Simulação
+    // ----------------------------------------------------
+    logPrintf(log, "=====================================================================\n");
+    logPrintf(log, "                    FILA DE PROCESSOS PREVISTOS \n");
+    displayQueue(log, &arrivalQueue, TRUE);
+    logPrintf(log, "=====================================================================\n");
+    logPrintf(log, "                      FILA DE ALTA PRIORIDADE\n");
+    if(!isEmpty(&highQueue))
+        displayQueue(log, &highQueue, TRUE);
+    logPrintf(log, "\n");
+    startSimulation(log, &highQueue, &lowQueue, &ioQueue, &arrivalQueue, AUTOMATIC_MODE);
     
     return 0;
 }

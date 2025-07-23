@@ -31,19 +31,6 @@ Process dequeueProcess(Queue *queue) {
     return empty;
 }
 
-Process getFrontProcess(Queue *queue) {
-    Queue cloneQueue;
-    memcpy(&cloneQueue, queue, sizeof(Queue)); // Cria um clone da fila, para não altera-la ao exibir.
-    if(!isEmpty(queue)) {
-        Process pGetted = cloneQueue.data[queue->front]; // Primeiro elemento da fila
-        return pGetted; // Retorna o processo capturado;
-    }
-    printf("Não é possível desenfileirar o processo, Fila vazia.\n");
-    Process empty;
-    empty.isActive = FALSE;
-    return empty;
-}
-
 // Verifica se a fila está cheia
 int isFull(Queue *queue) {
     if(queue->size == PROCESS_LIMIT)
@@ -58,34 +45,35 @@ int isEmpty(Queue *queue) {
     return FALSE; // Fila contém elementos
 }
 
-void displayQueue(Queue *queue, int details) {
+// Mostra todos os elementos da fila, e cria um log dos seus dados, pode ser detalhado ou não
+void displayQueue(FILE *log, Queue *queue, int details) {
     Queue cloneQueue;
     memcpy(&cloneQueue, queue, sizeof(Queue)); // Cria um clone da fila, para não altera-la ao exibir.
     if(!isEmpty(queue)) {
-        if(details == TRUE) {
-            printf("=====================================================================\n");
-            printf("Front: %d | Rear: %d | Tamanho atual: %d\n", queue->front, queue->rear, queue->size);
-            printf("=====================================================================\n");
+        if(details == TRUE) { // Impressão da fila detalhada
+            logPrintf(log, "=====================================================================\n");
+            logPrintf(log, "              Front: %d | Rear: %d | Tamanho atual: %d\n", queue->front, queue->rear, queue->size);
+            logPrintf(log, "=====================================================================\n");
             for(int i=0; i < queue->size; i++) { // Percorre a fila inteira exibindo cada processo presente.
                 Process curr = dequeueProcess(&cloneQueue);
-                printf("Nome: %s | ID: %d | Ciclos totais: %d | Ciclos restantes: %d | Ativo: %d | Entrada em %d ciclos\n", 
+                logPrintf(log, "| Processo -> Nome: %s | ID: %d | Ciclos totais: %d | Ciclos restantes: %d | Ativo: %d | Entrada em %d ciclos\n", 
                 curr.name, curr.id, curr.totalCycles, curr.remainingCycles, curr.isActive, curr.arrivalCycles);
-                printf("Prioridade: %d | After cycles: %d | type: %d | Ativo: %d | Requerido: %d | Ciclos I/O: %d\n",
+                logPrintf(log, "| I/O -> Prioridade: %d | Ciclos até I/O: %d | Tipo: %d | Ativo: %d | Requerido: %d | Ciclos I/O: %d\n",
                 curr.request.afterPriority, curr.request.afterCycles, curr.request.type, curr.request.isActive, curr.request.isRequired, curr.request.remainingCycles);
+                logPrintf(log, "*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
             }
-            printf("*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*\n");
             return;
         }
-        else {
-            printf("[");
+        else { // Impressão da fila de forma mais simplificada
+            logPrintf(log, "[");
             for(int i=0; i < queue->size; i++) { // Percorre a fila inteira exibindo cada processo presente.
                 Process curr = dequeueProcess(&cloneQueue);
-                printf("| ID: %d ", curr.id);
+                logPrintf(log, "| ID: %d ", curr.id);
             }
-            printf("]\n");
+            logPrintf(log, "]\n");
 
         }
     }
     else
-        printf("Fila vazia, nada a imprimir.\n");
+        logPrintf(log, "Fila vazia, nada a imprimir.\n");
 }
