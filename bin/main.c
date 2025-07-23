@@ -96,16 +96,10 @@ int main() {
             // ----------------------------------------------------
             //                      Simulação
             // ----------------------------------------------------
-            FILE *log = createLogFile();
-            logPrintf(log, "=====================================================================\n");
-            logPrintf(log, "                    FILA DE PROCESSOS PREVISTOS \n");
-            displayQueue(log, &arrivalQueue, TRUE);
-            logPrintf(log, "=====================================================================\n");
-            logPrintf(log, "                      FILA DE ALTA PRIORIDADE\n");
-            if(!isEmpty(&highQueue))
-                displayQueue(log, &highQueue, TRUE);
-            logPrintf(log, "\n");
-            startSimulation(log, &highQueue, &lowQueue, &ioQueue, &arrivalQueue, mode);
+            printf("==================================================\n");
+            printf("FILA DE PROCESSOS PREVISTOS \n");
+            displayQueue(&arrivalQueue, TRUE);
+            startSimulation(&highQueue, &lowQueue, &ioQueue, &arrivalQueue, mode);
             totalProcesses = 0;
             option = 0; // Reseta opção
             continue;
@@ -232,17 +226,17 @@ int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue
                     logPrintf(log, "Processo ID: %d | Situação: Finalizado | Removido | Quantum utilizado: %d\n", currentProcess.id, quantumUsed);
                     quantumUsed = 0;
                     finishedProcesses += 1;
-                    quantumRemaining = 0; // Reseta o quantum para ser distribuido para o próximo processo
+                    breakPoint = TRUE;
                 }
                 // Checagem de ciclos de I/O
                 else if(currentProcess.request.isRequired && currentProcess.request.afterCycles == 0 && !currentProcess.request.isActive && currentProcess.request.remainingCycles > 0) { // Parar o processo e enviar para fila de I/O
-                    logPrintf(log, "Processo ID: %d | Situação: Bloqueado | Enviado -> fila de I/O\n", currentProcess.id);
+                    printf("Processo ID: %d | Situação: Paralisado | Enviado -> fila de I/O\n", currentProcess.id);
                     quantumUsed = 0;
                     currentProcess.request.isActive = TRUE; // Ativa o modo espera do processo para I/O
                     enqueueProcess(ioQueue, currentProcess);
                     ioOcurrences += 1;
                     ioTypesOcurrences[currentProcess.request.type] += 1;
-                    quantumRemaining = 0; // Reseta o quantum para distribuir para o próximo processo.
+                    breakPoint = TRUE;
                 }
                 // Checagem de premptação de processo
                 else if(quantumRemaining == 0 && currentProcess.remainingCycles > 0) { // Processo não completado, enviado para baixa prioridade
@@ -254,8 +248,8 @@ int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue
                 logPrintf(log, "#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=#=\n");
             }
             else { // CPU em espera - Executa apenas os ciclos de I/O
-                logPrintf(log, "CPU em espera, aguardando novos processos para executar.\n");
-                logPrintf(log, "--------------------------------------------------------------\n");
+                printf("CPU em espera, aguardando até o proximo Quantum.\n");
+                printf("--------------------------------------------------------------\n");
                 idleCpuOcurrences += 1; // Registra a quantidade de ciclos de ociosidade
                 quantumRemaining -= 1; // Decrementa o quantum mesmo se a cpu estiver em modo de espera
             }
@@ -309,24 +303,19 @@ int startSimulation(FILE *log, Queue *highQueue, Queue* lowQueue, Queue *ioQueue
     // ----------------------------------------------------------------------
     //                              Estatísticas
     // ----------------------------------------------------------------------
-    logPrintf(log, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-    logPrintf(log, "                       Estatísticas Finais                    \n");
-    logPrintf(log, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-    logPrintf(log, "Total de ciclos executados: %d\n", currentCycle);
-    logPrintf(log, "Total de processos finalizados: %d\n", finishedProcesses);
-    logPrintf(log, "Preempções registradas: %d\n", premptionOcurrences);
-    logPrintf(log, "Operações de I/O realizadas: %d\n", ioOcurrences);
-    logPrintf(log, "Ciclos com CPU ociosa: %d\n", idleCpuOcurrences);
-    logPrintf(log, "Ciclos médios por processo: %.2f\n", currentCycle / (float) finishedProcesses);
-    logPrintf(log, "Throughput / Processos por ciclo: %.6f\n", finishedProcesses / (float) currentCycle);
-    logPrintf(log, "Processos que retornaram da I/O: %d\n", ioOcurrences);
-    logPrintf(log, "Tipos de I/O utilizados:\n");
-    logPrintf(log, "  - Disco: %d\n", ioTypesOcurrences[0]);
-    logPrintf(log, "  - Fita magnética: %d\n", ioTypesOcurrences[1]);
-    logPrintf(log, "  - Impressora: %d\n", ioTypesOcurrences[2]);
-    logPrintf(log, "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-    logPrintf(log, "==============================================================\n");
-
-    fclose(log);
+    printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("                       Estatísticas Finais                    \n");
+    printf("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
+    printf("Total de ciclos executados: %d\n", currentCycle);
+    printf("Total de processos finalizados: %d\n", finishedProcesses);
+    printf("Preempções registradas: %d\n", premptionOcurrences);
+    printf("Operações de I/O realizadas: %d\n", ioOcurrences);
+    printf("Ciclos com CPU ociosa: %d\n", idleCpuOcurrences);
+    printf("Tempo médio por processo: %.2f\n", currentCycle / (float) finishedProcesses);
+    printf("Processos que retornaram da I/O: %d\n", ioOcurrences);
+    printf("Tipos de I/O utilizados:\n");
+    printf("  - Disco: %d\n", ioTypesOcurrences[0]);
+    printf("  - Fita magnética: %d\n", ioTypesOcurrences[1]);
+    printf("  - Impressora: %d\n", ioTypesOcurrences[2]);
 }
 
