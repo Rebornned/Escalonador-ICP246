@@ -1,7 +1,5 @@
 #include "icp246_libs.h"
 
-// Linha de acesso CD: C:/Users/Dhemerson/Desktop/Programacao/GKT_C/Escalonador-ICP246/bin
-// Linha de compilação: gcc -g -o main.exe main.c queue_libs.c process_libs.c files_libs.c
 
 int main() {
     SetConsoleOutputCP(CP_UTF8);
